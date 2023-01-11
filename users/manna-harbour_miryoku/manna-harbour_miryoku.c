@@ -12,6 +12,11 @@
 
 enum {
     U_TD_BOOT,
+
+#if defined (MIRYOKU_ALPHAS_BEPO)
+    TD_V,
+#endif
+
 #define MIRYOKU_X(LAYER, STRING) U_TD_U_##LAYER,
 MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
@@ -34,6 +39,11 @@ MIRYOKU_LAYER_LIST
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
+
+#if defined (MIRYOKU_ALPHAS_BEPO)
+    [TD_V]  = ACTION_TAP_DANCE_DOUBLE(BP_V, BP_W),
+#endif
+
 #define MIRYOKU_X(LAYER, STRING) [U_TD_U_##LAYER] = ACTION_TAP_DANCE_FN(u_td_fn_U_##LAYER),
 MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
@@ -53,10 +63,54 @@ MIRYOKU_LAYER_LIST
 
 const key_override_t capsword_key_override = ko_make_basic(MOD_MASK_SHIFT, CW_TOGG, KC_CAPS);
 
-const key_override_t **key_overrides = (const key_override_t *[]){
-    &capsword_key_override,
-    NULL
-};
+#if defined (MIRYOKU_ALPHAS_BEPO)
+  const key_override_t define_w = ko_make_basic(MOD_BIT(KC_RALT), BP_V, BP_W);
+  const key_override_t define_z = ko_make_basic(MOD_BIT(KC_RALT), LGUI_T(BP_N), BP_Z);
+  const key_override_t define_cced = ko_make_basic(MOD_BIT(KC_RALT), BP_C, BP_CCED);
+  const key_override_t define_altgr_m = ko_make_basic(MOD_BIT(KC_RALT), BP_M, BP_PRIM);
+
+  const key_override_t define_altgr_g = ko_make_basic(MOD_BIT(KC_RALT), BP_G, BP_LABK);
+  const key_override_t define_altgr_h = ko_make_basic(MOD_BIT(KC_RALT), ALGR_T(BP_H), BP_RABK);
+  const key_override_t define_altgr_shift_g = ko_make_basic(MOD_MASK_SA, BP_G, BP_LEQL);
+  const key_override_t define_altgr_shift_h = ko_make_basic(MOD_MASK_SA, ALGR_T(BP_H), BP_GEQL);
+
+  const key_override_t define_altgr_f = ko_make_basic(MOD_BIT(KC_RALT), LT(U_BUTTON,BP_F), BP_SLSH);
+
+  const key_override_t define_altgr_s = ko_make_basic(MOD_BIT(KC_RALT), LCTL_T(BP_S), BP_LDAQ);
+  const key_override_t define_altgr_r = ko_make_basic(MOD_BIT(KC_RALT), LALT_T(BP_R), BP_RDAQ);
+  const key_override_t define_altgr_shift_s = ko_make_basic(MOD_MASK_SA, LCTL_T(BP_S), BP_LDQU);
+  const key_override_t define_altgr_shift_r = ko_make_basic(MOD_MASK_SA, LALT_T(BP_R), BP_RDQU);
+
+  const key_override_t define_altgr_shift_comma = ko_make_basic(MOD_MASK_SA, BP_COMM, BP_DQUO);
+#endif
+
+  // This globally defines all key overrides to be used
+  const key_override_t **key_overrides = (const key_override_t *[]){
+      &capsword_key_override,
+
+#if defined (MIRYOKU_ALPHAS_BEPO)
+      &define_w,
+      &define_z,
+      &define_cced,
+      &define_altgr_m,
+
+      &define_altgr_g,
+      &define_altgr_h,
+      &define_altgr_shift_g,
+      &define_altgr_shift_h,
+
+      &define_altgr_f,
+
+      &define_altgr_shift_s,
+      &define_altgr_shift_r,
+      &define_altgr_s,
+      &define_altgr_r,
+
+      &define_altgr_shift_comma,
+#endif
+
+      NULL
+  };
 
 
 // thumb combos
