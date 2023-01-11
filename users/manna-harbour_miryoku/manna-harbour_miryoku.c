@@ -12,6 +12,7 @@
 
 enum {
     U_TD_BOOT,
+
 #define MIRYOKU_X(LAYER, STRING) U_TD_U_##LAYER,
 MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
@@ -34,6 +35,7 @@ MIRYOKU_LAYER_LIST
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
+
 #define MIRYOKU_X(LAYER, STRING) [U_TD_U_##LAYER] = ACTION_TAP_DANCE_FN(u_td_fn_U_##LAYER),
 MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
@@ -53,10 +55,26 @@ MIRYOKU_LAYER_LIST
 
 const key_override_t capsword_key_override = ko_make_basic(MOD_MASK_SHIFT, CW_TOGG, KC_CAPS);
 
-const key_override_t **key_overrides = (const key_override_t *[]){
-    &capsword_key_override,
-    NULL
-};
+#if defined (MIRYOKU_ALPHAS_OPTIMOT)
+  const key_override_t define_cced = ko_make_basic(MOD_BIT(KC_RALT), OP_C, OP_CCED);
+  const key_override_t define_delete = ko_make_basic(MOD_MASK_SHIFT, LT(U_NUM,KC_BSPC), KC_DEL);
+  const key_override_t define_z = ko_make_basic(MOD_BIT(KC_RALT), OP_W, OP_Z);
+  const key_override_t define_x = ko_make_basic(MOD_BIT(KC_RALT), LCTL_T(OP_S), OP_X);
+#endif
+
+  // This globally defines all key overrides to be used
+  const key_override_t **key_overrides = (const key_override_t *[]){
+      &capsword_key_override,
+
+#if defined (MIRYOKU_ALPHAS_OPTIMOT)
+      &define_cced,
+      &define_delete,
+      &define_z,
+      &define_x,
+#endif
+
+      NULL
+  };
 
 
 // thumb combos
