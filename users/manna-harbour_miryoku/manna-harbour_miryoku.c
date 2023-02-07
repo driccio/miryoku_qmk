@@ -49,12 +49,54 @@ enum custom_keycodes {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static bool is_dcir_mode = false;
+
     switch (keycode) {
         case EMAIL:
             if (record->event.pressed) {
                 SEND_STRING("");
             }
             return false;
+
+        case LT(U_FUN,OP_DCIR):
+            if (!record->event.pressed) {
+                is_dcir_mode = true;
+            }
+            return true;
+
+        case OP_W: {
+            bool continue_default_handling = true;
+
+            if (is_dcir_mode) {
+                is_dcir_mode = false;
+                tap_code(KC_BSPC);
+                tap_code(OP_Z);
+                continue_default_handling = false;
+            } else {
+                continue_default_handling = true;
+            }
+
+            return continue_default_handling;
+        }
+
+        case LCTL_T(OP_S): {
+            bool continue_default_handling = true;
+
+            if (is_dcir_mode) {
+                is_dcir_mode = false;
+                tap_code(KC_BSPC);
+                tap_code(OP_X);
+                continue_default_handling = false;
+            } else {
+                continue_default_handling = true;
+            }
+
+            return continue_default_handling;
+        }
+
+        default:
+            is_dcir_mode = false;
+            return true;
     }
 
     return true;
