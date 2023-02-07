@@ -19,7 +19,7 @@ OP_SLSH,           OP_1,              OP_2,              OP_3,              OP_A
 U_NP,              U_NP,              OP_COMM,           OP_0,              OP_EQL,            U_NA,              U_NA,              U_NA,              U_NP,              U_NP
 
 #define MIRYOKU_ALTERNATIVES_SYM_OPTIMOT \
-OP_LCBR,           OP_AMPR,           U_NP,             OP_GRV,           OP_RCBR,           U_NA,              DF(U_BASE),        DF(U_EXTRA),       DF(U_TAP),         QK_BOOT,           \
+OP_LCBR,           OP_AMPR,           EMAIL,             OP_GRV,           OP_RCBR,           U_NA,              DF(U_BASE),        DF(U_EXTRA),       DF(U_TAP),         QK_BOOT,           \
 OP_LABK,           OP_DLR,            OP_PERC,           OP_DQUO,          OP_RABK,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
 OP_DTIL,           OP_DCIR,           OP_AT,             OP_HASH,          OP_PIPE,           U_NA,              DF(U_SYM),         DF(U_MOUSE),       KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              OP_LPRN,           OP_RPRN,          OP_UNDS,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP

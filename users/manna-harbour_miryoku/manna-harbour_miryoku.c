@@ -44,7 +44,26 @@ MIRYOKU_LAYER_LIST
 
 // keymap
 
+enum custom_keycodes {
+    EMAIL = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case EMAIL:
+            if (record->event.pressed) {
+                SEND_STRING("");
+            }
+            return false;
+    }
+
+    return true;
+}
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+[0] = {
+        {EMAIL},
+
+    },
 #define MIRYOKU_X(LAYER, STRING) [U_##LAYER] = U_MACRO_VA_ARGS(MIRYOKU_LAYERMAPPING_##LAYER, MIRYOKU_LAYER_##LAYER),
 MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
