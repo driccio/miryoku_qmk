@@ -126,3 +126,59 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(thumbcombos_fun, KC_APP)
 };
 #endif
+
+// caps word
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case OP_A:
+        case OP_B:
+        case OP_C:
+        case OP_D:
+        case OP_E:
+        case OP_F:
+        case OP_G:
+        case OP_H:
+        case OP_I:
+        case OP_J:
+        case OP_K:
+        case OP_L:
+        case OP_M:
+        case OP_N:
+        case OP_O:
+        case OP_P:
+        case OP_Q:
+        case OP_R:
+        case OP_S:
+        case OP_T:
+        case OP_U:
+        case OP_V:
+        case OP_W:
+        case OP_X:
+        case OP_Y:
+        case OP_Z:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case OP_1:
+        case OP_2:
+        case OP_3:
+        case OP_4:
+        case OP_5:
+        case OP_6:
+        case OP_7:
+        case OP_8:
+        case OP_9:
+        case OP_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case OP_UNDS:
+        case OP_HMIN:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+}
