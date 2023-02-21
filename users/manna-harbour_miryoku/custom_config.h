@@ -5,6 +5,7 @@
 
 #pragma once
 
+// Bla
 #define MASTER_LEFT
 
 #ifdef RGB_MATRIX_ENABLE
