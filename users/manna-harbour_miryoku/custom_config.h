@@ -5,7 +5,13 @@
 
 #pragma once
 
-#define MASTER_LEFT
+#define USE_SERIAL
+
+
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 2000
+
+#define EE_HANDS
 
 #ifdef RGB_MATRIX_ENABLE
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
