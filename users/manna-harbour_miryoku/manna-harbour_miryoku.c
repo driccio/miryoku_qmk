@@ -175,10 +175,13 @@ bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         // Keycodes that continue Caps Word, with shift applied.
         case OP_A:
+        case OP_AGRV:
         case OP_B:
         case OP_C:
         case OP_D:
         case OP_E:
+        case OP_EACU:
+        case OP_EGRV:
         case OP_F:
         case OP_G:
         case OP_H:
