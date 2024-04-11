@@ -18,6 +18,7 @@
 
 #pragma once
 
+
 /* Pointing device configuration. */
 
 // Enable use of pointing device on slave split.

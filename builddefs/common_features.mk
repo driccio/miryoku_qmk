@@ -84,6 +84,13 @@ endif
 ifeq ($(strip $(MIDI_ENABLE)), yes)
     OPT_DEFS += -DMIDI_ENABLE
     MUSIC_ENABLE = yes
+    COMMON_VPATH += $(QUANTUM_PATH)/midi
+    SRC += $(QUANTUM_DIR)/midi/midi.c
+    SRC += $(QUANTUM_DIR)/midi/midi_device.c
+    SRC += $(QUANTUM_DIR)/midi/qmk_midi.c
+    SRC += $(QUANTUM_DIR)/midi/sysex_tools.c
+    SRC += $(QUANTUM_DIR)/midi/bytequeue/bytequeue.c
+    SRC += $(QUANTUM_DIR)/midi/bytequeue/interrupt_setting.c
     SRC += $(QUANTUM_DIR)/process_keycode/process_midi.c
 endif
 
@@ -230,7 +237,7 @@ else
         # Wear-leveling EEPROM implementation, backed by MCU flash
         OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_WEAR_LEVELING
         SRC += eeprom_driver.c eeprom_wear_leveling.c
-        WEAR_LEVELING_DRIVER = embedded_flash
+        WEAR_LEVELING_DRIVER ?= embedded_flash
       else ifneq ($(filter $(MCU_SERIES),STM32L0xx STM32L1xx),)
         # True EEPROM on STM32L0xx, L1xx
         OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_STM32_L0_L1
@@ -239,7 +246,7 @@ else
         # Wear-leveling EEPROM implementation, backed by RP2040 flash
         OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_WEAR_LEVELING
         SRC += eeprom_driver.c eeprom_wear_leveling.c
-        WEAR_LEVELING_DRIVER = rp2040_flash
+        WEAR_LEVELING_DRIVER ?= rp2040_flash
       else ifneq ($(filter $(MCU_SERIES),KL2x K20x),)
         # Teensy EEPROM implementations
         OPT_DEFS += -DEEPROM_KINETIS_FLEXRAM
@@ -613,6 +620,7 @@ ifeq ($(strip $(VIA_ENABLE)), yes)
     DYNAMIC_KEYMAP_ENABLE := yes
     RAW_ENABLE := yes
     BOOTMAGIC_ENABLE := yes
+    TRI_LAYER_ENABLE := yes
     SRC += $(QUANTUM_DIR)/via.c
     OPT_DEFS += -DVIA_ENABLE
 endif
@@ -905,5 +913,13 @@ ifeq ($(strip $(ENCODER_ENABLE)), yes)
     OPT_DEFS += -DENCODER_ENABLE
     ifeq ($(strip $(ENCODER_MAP_ENABLE)), yes)
         OPT_DEFS += -DENCODER_MAP_ENABLE
+    endif
+endif
+
+ifeq ($(strip $(OS_DETECTION_ENABLE)), yes)
+    SRC += $(QUANTUM_DIR)/os_detection.c
+    OPT_DEFS += -DOS_DETECTION_ENABLE
+    ifeq ($(strip $(OS_DETECTION_DEBUG_ENABLE)), yes)
+        OPT_DEFS += -DOS_DETECTION_DEBUG_ENABLE
     endif
 endif

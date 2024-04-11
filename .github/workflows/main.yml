@@ -54,6 +54,7 @@ jobs:
       - name: Merge branches
         if: ${{ matrix.merge != '' && matrix.merge != 'default' }}
         run: |
+          git config --global --add safe.directory '*'
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git fetch --unshallow
@@ -72,7 +73,9 @@ jobs:
             git status
           done
       - name: Submodules
-        run: make git-submodule
+        run: |
+          git config --global --add safe.directory '*'
+          make git-submodule
       - name: Process inputs
         id: inputs
         run: |
