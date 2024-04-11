@@ -20,7 +20,7 @@
 #define TT_MDIA TT(_MEDIA)
 
 // enum more_custom_keycodes {
-//  KC_P00 = NEW_SAFE_RANGE
+//  KC_P00 = USER_SAFE_RANGE
 //};
 
 // clang-format off
@@ -73,14 +73,4 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
     //  break;
     //}
     return true;
-}
-
-void matrix_init_keymap(void) {
-#ifndef CONVERT_TO_PROTON_C
-    setPinOutput(D5);
-    writePinHigh(D5);
-
-    setPinOutput(B0);
-    writePinHigh(B0);
-#endif
 }
