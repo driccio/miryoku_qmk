@@ -1,12 +1,14 @@
-#include "keymap.h"
+#pragma once
+
+#include QMK_KEYBOARD_H
 
 /*
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
  * │ $ │ « │ » │ " │ - │ + │ * │ / │ = │ ( │ ) │ @ │ # │       │
  * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
- * │     │ À │ J │ O │ É │ B │ F │ D │ L │ ' │ Q │ X │ Ç │     │
+ * │     │ À │ J │ O │ É │ B │ F │ D │ L │ ' │ Q │ X │ Z │     │
  * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
- * │      │ A │ I │ E │ U │ , │ P │ T │ S │ R │ N │ ^ │ Z │    │
+ * │      │ A │ I │ E │ U │ , │ P │ T │ S │ R │ N │ ^ │ Ç │    │
  * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
  * │    │   │ K │ Y │ È │ . │ W │ G │ C │ M │ H │ V │          │
  * ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
@@ -31,7 +33,7 @@
 #define OP_AGRV  KC_Q     // À
 #define OP_J     KC_W     // J
 #define OP_O     KC_E     // O
-#define OP_EACU  KC_R     // È
+#define OP_EACU  KC_R     // É
 #define OP_B     KC_T     // B
 #define OP_F     KC_Y     // F
 #define OP_D     KC_U     // D
@@ -39,7 +41,7 @@
 #define OP_QUOT  KC_O     // '
 #define OP_Q     KC_P     // Q
 #define OP_X     KC_LBRC  // X
-#define OP_CCED  KC_RBRC  // Ç
+#define OP_Z     KC_RBRC  // Z
 // Row 3
 #define OP_A     KC_A     // A
 #define OP_I     KC_S     // I
@@ -52,7 +54,7 @@
 #define OP_R     KC_L     // R
 #define OP_N     KC_SCLN  // N
 #define OP_DCIR  KC_QUOT  // ^ (dead)
-#define OP_Z     KC_BSLS  // Z
+#define OP_CCED  KC_BSLS  // Ç
 // Row 4
 #define OP_K     KC_Z     // K
 #define OP_Y     KC_X     // Y
@@ -136,7 +138,7 @@
 #define OP_RSQM  ALGR(OP_QUOT)  // ’
 #define OP_RNGA  ALGR(OP_Q)     // ˚ (dead)
 #define OP_PIPE  ALGR(OP_X)     // |
-#define OP_LIG1  ALGR(OP_CCED)  // ̉ (dead)
+#define OP_RWAR  ALGR(OP_Z)     // Rightwards arrow
 // Row 3
 #define OP_AE    ALGR(OP_A)     // æ
 #define OP_SUB2  ALGR(OP_I)     // ₂
@@ -149,7 +151,7 @@
 #define OP_LLWC  ALGR(OP_R)     // L'
 #define OP_DTIL  ALGR(OP_N)     // ~ (dead)
 #define OP_DIAE  ALGR(OP_DCIR)  // ¨ (dead)
-#define OP_RWAR  ALGR(OP_Z)     // Rightwards arrow
+#define OP_LIG1  ALGR(OP_CCED)  // ̉ (dead)
 // Row 4
 #define OP_LOWS  ALGR(OP_K)     // ø
 #define OP_DOTA  ALGR(OP_Y)     // ˙ (dead)
@@ -200,7 +202,7 @@
 #define OP_IQUE   S(ALGR(OP_QUOT))  // ¿
 #define OP_RQUS   S(ALGR(OP_Q))     // ⸮
 #define OP_REGD   S(ALGR(OP_X))     // ®
-#define OP_HORN   S(ALGR(OP_CCED))  // horne (dead)
+#define OP_TM   S(ALGR(OP_Z))     // ™
 // Row 3
 #define OP_SECT S(ALGR(OP_I))     // §
 #define OP_PARA S(ALGR(OP_E))     // ¶
@@ -211,7 +213,7 @@
 #define OP_UBAW S(ALGR(OP_R))     // ⬆
 #define OP_RBAW S(ALGR(OP_N))     // ➡
 #define OP_IEXL S(ALGR(OP_DCIR))  // ¡
-#define OP_TM   S(ALGR(OP_Z))     // ™
+#define OP_HORN   S(ALGR(OP_CCED))  // horne (dead)
 // Row 4
 #define OP_HELM  S(ALGR(OP_K))     // ⎈
 #define OP_OPTN  S(ALGR(OP_Y))     // ⌥
