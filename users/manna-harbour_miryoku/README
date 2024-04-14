@@ -1,0 +1,40 @@
+Layout pour Optimot (optimot.fr) avec Miryoku
+
+À propos :
+Le travail réalisé ici a été fait pour un corne (crkbd) 3*5.
+
+Dernière mise à jour compatible avec le driver Optimot 1.8
+
+
+À savoir :
+- Ma philosophie a été de ne pas dériver de ce que propose Optimot, par respect pour le travail accompli, mais aussi
+et surtout parce que la disposition a été pensée pour être ergonomique et a été éprouvée.
+- Toutes les recommandations du site Optimot.fr pour les claviers 3*5 sont respectées :
+    - À, Q, Ç, ^ (touche morte), _ et - sont notamment accessibles via des combos (2 touches enfoncées en même temps)
+- Les couches symboles et chiffres diffèrent de Miryoku, pour mes propres besoins. J'invite chacun à les revoir pour
+ses propres usages.
+- J'ai pris le partie de sacrifier la touche `delete` (accessible via le pouce droit sur la touche la plus à droite)
+afin d'y placer la touche morte ^ (qui m'a semblé plus importante que le delete). J'ai rendu le delete accessible
+avec Shift + backspace.
+
+
+Exemple de commande pour ProMicro (et partie gauche) :
+qmk flash -c -kb crkbd -km manna-harbour_miryoku -bl avrdude-split-left \
+  -e MIRYOKU_ALPHAS=OPTIMOT \
+  -e MIRYOKU_EXTRA=QWERTY \
+  -e MIRYOKU_TAP=OPTIMOT \
+  -e MIRYOKU_NAV=DEFAULT \
+  -e MIRYOKU_CLIPBOARD=DEFAULT \
+  -e MIRYOKU_LAYERS=DEFAULT
+
+
+Éxemple de commande pour Elite-C (avec partie gauche définie avec `#define MASTER_LEFT` dans custom_config.h) :
+qmk flash -c -kb crkbd -km manna-harbour_miryoku -bl dfu \
+  -e MIRYOKU_ALPHAS=OPTIMOT \
+  -e MIRYOKU_EXTRA=QWERTY \
+  -e MIRYOKU_TAP=OPTIMOT \
+  -e MIRYOKU_NAV=DEFAULT \
+  -e MIRYOKU_CLIPBOARD=DEFAULT \
+  -e MIRYOKU_LAYERS=DEFAULT
+
+
