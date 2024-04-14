@@ -1,7 +1,7 @@
 #include "keymap_optimot.h"
 
 #define MIRYOKU_ALTERNATIVES_BASE_OPTIMOT \
-OP_AGRV,               OP_J,              OP_O,                OP_EACU,            OP_B,                OP_F,              OP_D,              OP_L,              OP_QUOT,       OP_Q,              \
+OP_Z,               OP_J,              OP_O,                OP_EACU,            OP_B,                OP_F,              OP_D,              OP_L,              OP_QUOT,       OP_X,              \
 LGUI_T(OP_A),          LALT_T(OP_I),      LCTL_T(OP_E),        LSFT_T(OP_U),       OP_COMM,             OP_P,              LSFT_T(OP_T),      LCTL_T(OP_S),      LALT_T(OP_R),  LGUI_T(OP_N),      \
 LT(U_BUTTON,OP_K),     ALGR_T(OP_Y),      OP_EGRV,             OP_DOT,             OP_W,                OP_G,              OP_C,              OP_M,              ALGR_T(OP_H),  LT(U_BUTTON,OP_V), \
 U_NP,                  U_NP,              LT(U_MEDIA,KC_ESC),  LT(U_NAV,KC_SPC),  LT(U_MOUSE,KC_TAB),  LT(U_SYM,KC_ENT),  LT(U_NUM,KC_BSPC), LT(U_FUN,OP_DCIR),  U_NP,          U_NP

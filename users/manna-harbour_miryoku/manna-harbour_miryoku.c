@@ -117,10 +117,7 @@ MIRYOKU_LAYER_LIST
 const key_override_t capsword_key_override = ko_make_basic(MOD_MASK_SHIFT, CW_TOGG, KC_CAPS);
 
 #if defined (MIRYOKU_ALPHAS_OPTIMOT)
-  const key_override_t define_cced = ko_make_basic(MOD_BIT(KC_RALT), OP_C, OP_CCED);
   const key_override_t define_delete = ko_make_basic(MOD_MASK_SHIFT, LT(U_NUM,KC_BSPC), KC_DEL);
-  const key_override_t define_z = ko_make_basic(MOD_BIT(KC_RALT), OP_W, OP_Z);
-  const key_override_t define_x = ko_make_basic(MOD_BIT(KC_RALT), LCTL_T(OP_S), OP_X);
 #endif
 
   // This globally defines all key overrides to be used
@@ -128,10 +125,7 @@ const key_override_t capsword_key_override = ko_make_basic(MOD_MASK_SHIFT, CW_TO
       &capsword_key_override,
 
 #if defined (MIRYOKU_ALPHAS_OPTIMOT)
-      &define_cced,
       &define_delete,
-      &define_z,
-      &define_x,
 #endif
 
       NULL
@@ -166,6 +160,31 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(thumbcombos_sym, KC_LPRN),
   #endif
   COMBO(thumbcombos_fun, KC_APP)
+};
+#endif
+
+
+// Optimot Combos (Not compatible with thumb combos)
+#if defined (MIRYOKU_ALPHAS_OPTIMOT)
+// Left hand
+const uint16_t PROGMEM op_agrav[] = {OP_O, OP_EACU, COMBO_END};
+const uint16_t PROGMEM op_unds[] = {ALGR_T(OP_Y), OP_EGRV, COMBO_END};
+const uint16_t PROGMEM op_hmin[] = {OP_EGRV, OP_DOT, COMBO_END};
+// Right hand
+const uint16_t PROGMEM op_q[] = {OP_D, OP_L, COMBO_END};
+const uint16_t PROGMEM op_dcir[] = {OP_C, OP_M, COMBO_END};
+const uint16_t PROGMEM op_cced[] = {OP_M, ALGR_T(OP_H), COMBO_END};
+
+
+combo_t key_combos[COMBO_COUNT] = {
+  // Left hand
+  COMBO(op_agrav, OP_AGRV),
+  COMBO(op_unds, OP_UNDS),
+  COMBO(op_hmin, OP_HMIN),
+  // Right hand
+  COMBO(op_q, OP_Q),
+  COMBO(op_dcir, OP_DCIR),
+  COMBO(op_cced, OP_CCED)
 };
 #endif
 
