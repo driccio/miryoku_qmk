@@ -18,8 +18,8 @@ afin d'y placer la touche morte ^ (qui m'a semblé plus importante que le delete
 avec Shift + backspace.
 
 
-Exemple de commande pour ProMicro (et partie gauche) :
-qmk flash -c -kb crkbd -km manna-harbour_miryoku -bl avrdude-split-left \
+Exemple de commande pour ProMicro main droite :
+qmk flash -c -kb crkbd -km manna-harbour_miryoku -bl avrdude-split-right \
   -e MIRYOKU_ALPHAS=OPTIMOT \
   -e MIRYOKU_EXTRA=QWERTY \
   -e MIRYOKU_TAP=OPTIMOT \
@@ -28,8 +28,8 @@ qmk flash -c -kb crkbd -km manna-harbour_miryoku -bl avrdude-split-left \
   -e MIRYOKU_LAYERS=DEFAULT
 
 
-Éxemple de commande pour Elite-C (avec partie gauche définie avec `#define MASTER_LEFT` dans custom_config.h) :
-qmk flash -c -kb crkbd -km manna-harbour_miryoku -bl dfu \
+Éxemple de commande pour Elite-C main gauche :
+qmk flash -c -kb crkbd -km manna-harbour_miryoku -bl dfu-split-left \
   -e MIRYOKU_ALPHAS=OPTIMOT \
   -e MIRYOKU_EXTRA=QWERTY \
   -e MIRYOKU_TAP=OPTIMOT \
